@@ -1,8 +1,8 @@
 """
 This module lets you experience the POWER of FUNCTIONS and PARAMETERS.
 Authors: David Mutchler, Vibha Alangar, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Braden Kattman.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -15,12 +15,15 @@ def main():
     window = rg.TurtleWindow()
     window.tracer(drawing_speed)
 
-    # -------------------------------------------------------------------------
+    # --------------------------------------------S-----------------------------
     # When the _TODO_s ask you to test YOUR code, comment-out the following
     # two statements and add calls to   better_draw_circles   et al as needed.
     # -------------------------------------------------------------------------
-    draw_circles(rg.Point(100, 50))
-    draw_circles(rg.Point(-200, 0))
+    better_draw_circles(rg.Point(200, 50), 10)
+    better_draw_circles(rg.Point(-100, -50), 20)
+
+    even_better_draw_circles(rg.Point(200, -50), 8, 20, 'blue', 3)
+    even_better_draw_circles(rg.Point(-180, 70), 30, 5, 'orange', 5)
 
     window.update()
     window.close_on_mouse_click()
@@ -28,7 +31,7 @@ def main():
 
 ###############################################################################
 #
-# TODO: 2.
+# DONE: 2.
 #   First, RUN this program.  You will see that it draws concentric circles
 #   whose radii vary by 15.
 #
@@ -88,7 +91,7 @@ def draw_circles(point):
 
 ###############################################################################
 #
-# TODO: 3a.
+# DONE: 3a.
 #   The function
 #       better_draw_circles
 #   defined below this _TODO_ starts out exactly the same as the code for
@@ -111,7 +114,7 @@ def draw_circles(point):
 #   just as in   draw_circles.  But if that parameter is given the value 3,
 #   then the circles should have radii:  3  6  9  12  15  18 ..., respectively.
 #
-# TODO: 3b.
+# DONE: 3b.
 #   In   main  at the place indicated, comment-out the two existing calls
 #   to  draw_circles  and add at least two calls to the improved
 #   better_draw_circles  function, to TEST that your modified code is correct
@@ -120,7 +123,7 @@ def draw_circles(point):
 # ###############################################################################
 
 
-def better_draw_circles(point):
+def better_draw_circles(point, radius1):
     """
     Starts out the same as the   draw_circles   function defined ABOVE.
     You Will make it an IMPROVED, MORE POWERFUL function per the above _TODO_.
@@ -136,11 +139,11 @@ def better_draw_circles(point):
 
         # Go DOWN 15 pixels, ending up pointing east again
         turtle.right(90)
-        turtle.forward(15)
+        turtle.forward(radius1)
         turtle.left(90)
 
         turtle.pen_down()
-        turtle.draw_circle(15 * k)  # Radius 15, 30, 45, 60, ...
+        turtle.draw_circle(radius1 * k)  # Radius 15, 30, 45, 60, ...
 
 
 ###############################################################################
@@ -175,9 +178,31 @@ def better_draw_circles(point):
 #
 ###############################################################################
 
-def even_better_draw_circles(point):
+def even_better_draw_circles(point, radius, number, color, thickness):
     """ An improved version of draw_circles, per the _TODO_ above. """
     # READ the above _TODO_ and then copy-paste code from better_circles here:
+    """
+    Starts out the same as the   draw_circles   function defined ABOVE.
+    You Will make it an IMPROVED, MORE POWERFUL function per the above _TODO_.
+    """
+    turtle = rg.SimpleTurtle()
+    turtle.pen.color = color
+    turtle.pen.thickness= thickness
+    turtle.pen_up()
+    turtle.go_to(point)
+    turtle.set_heading(0)  # Point "east" (towards the right)
+
+    for k in range(number):  # k becomes 1, 2, 3, ... 10
+
+        turtle.pen_up()
+
+        # Go DOWN 15 pixels, ending up pointing east again
+        turtle.right(90)
+        turtle.forward(radius)
+        turtle.left(90)
+
+        turtle.pen_down()
+        turtle.draw_circle(radius * k)  # Radius 15, 30, 45, 60, ...
 
 
 ###############################################################################
